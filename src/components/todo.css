@@ -1,7 +1,8 @@
 .task {
-    margin-top: 20px;
+    margin-top: 50px;
     display: block;
     padding: 10px;
+    border: 1px solid white;
 }
 .title-zone{
     display: flex;
@@ -11,5 +12,24 @@
 .addListIcon{
     margin-left: 20px;
     cursor: pointer;
+    margin-top: 10px;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
+    display: block;
 }
-
+.addListIconHide {
+    margin-left: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+ 
+    color: black;
+    display: none;
+}
+.delete-todo{
+    cursor: pointer;
+}
+#input-task{
+    color: white;
+    outline: white;
+}

@@ -11,7 +11,6 @@ export default function Form() {
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
-  var date = new Date();
   const createTodo = () => {
     const todoRef = firebase.database().ref('Todo').child(title);
     var date = new Date();
@@ -26,9 +25,7 @@ export default function Form() {
   return (
     <div className="form">
         <TextField
-          label="Task"
           id="filled-size-small"
-          defaultValue="Small"
           size="small"
           onChange={handleOnChange} value={title}
         />

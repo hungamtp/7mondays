@@ -1,13 +1,12 @@
 import React , {useState , useEffect} from 'react';
 import firebase from '../util/firebase';
-import { Paper } from '@material-ui/core';
 import "./todo.css";
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import { TextField , Grid } from '@material-ui/core';
+import { TextField  } from '@material-ui/core';
 import Task from './Task';
+import AddIcon from '@material-ui/icons/Add';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
-export default function Todo({ todo , id }) {
+export default function Todo({ todo , id , index }) {
   const [title, setTitle] = useState('');
     const [todoList, setTodoList] = useState();
    const handleOnChange = (e) => {
@@ -30,12 +29,7 @@ export default function Todo({ todo , id }) {
     const todoRef = firebase.database().ref('Todo').child(todo.id);
     todoRef.remove();
   };
-  const completeTodo = () => {
-    const todoRef = firebase.database().ref('Todo').child(todo.id);
-    todoRef.update({
-      complete: !todo.complete,
-    });
-  };
+
 
     useEffect(() => {
     const todoRef = firebase.database().ref(`Todo/${todo.id}`);
@@ -49,36 +43,33 @@ export default function Todo({ todo , id }) {
     });
   }, []);
   return (
-    <Paper elevation={10} className="task">
+    <div elevation={10} className="task">
       <div className="title-zone">
-        <div><b>{todo.id}</b></div>
-        <div >{todo.date}</div>
-        <DeleteOutlineIcon onClick={deleteTodo} className="delete-todo" fontSize="large"/>
-      </div>
-      
+        <div><b>{index}.{todo.id}</b></div>
           <div className="form-todo">
         <TextField
-          id="filled-size-small"
-          defaultValue="Small"
+          id="input-task"
           size="small"
+          variant="outlined"
           onChange={handleOnChange} value={title}
         />
 
-     <PlaylistAddIcon fontSize="small" className="addListIcon" onClick={createTodo}/>
+     <AddIcon fontSize="small" className={title ==="" ?"addListIconHide" :"addListIcon"} onClick={createTodo}/>
       
     </div>
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" >
-          {todoList
-        ? todoList.map((task, index) => <Task  task={task} id={todo.id} key={index} />)
+        <DeleteOutlineIcon onClick={deleteTodo} className="delete-todo" fontSize="large"/>
+      </div>
+      
+
+
+        {todoList
+        ? todoList.map((task, index) =>
+          <Task  task={task} id={todo.id} index={index}/>
+        )
         : ''}
 
-        </Grid>
-      </Grid>
-      </Grid>
 
       
-    </Paper>
+    </div>
   );
 }
