@@ -1,0 +1,11 @@
+.form {
+    display: flex;
+    justify-content: center;
+}
+#addIcon{
+    margin-top: auto;
+    margin-left: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}

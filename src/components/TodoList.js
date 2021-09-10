@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../util/firebase';
 import Todo from './Todo';
-
+import {Container} from "@material-ui/core";
 export default function TodoList() {
   const [todoList, setTodoList] = useState();
 
@@ -18,10 +18,10 @@ export default function TodoList() {
   }, []);
 
   return (
-    <div>
+    <Container maxWidth="lg">
       {todoList
         ? todoList.map((todo, index) => <Todo todo={todo} key={index} />)
         : ''}
-    </div>
+    </Container>
   );
 }
