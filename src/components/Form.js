@@ -11,13 +11,14 @@ export default function Form() {
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
+  var date = new Date();
   const createTodo = () => {
-    const todoRef = firebase.database().ref('Todo');
+    const todoRef = firebase.database().ref('Todo').child(title);
     var date = new Date();
     const todo = {
       title,
       complete: false,
-      date :`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
+      date :`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`,
     };
 
     todoRef.push(todo);
@@ -31,8 +32,7 @@ export default function Form() {
           size="small"
           onChange={handleOnChange} value={title}
         />
-
-     <AddIcon onClick={createTodo} id="addIcon"/>
+     <AddIcon onClick={createTodo}  id={title === "" ?  "hideAddIcon" : "addIcon"}/>
       
     </div>
   );
