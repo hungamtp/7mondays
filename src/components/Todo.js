@@ -7,14 +7,14 @@ import { TextField , Grid } from '@material-ui/core';
 import Task from './Task';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
-export default function Todo({ todo }) {
+export default function Todo({ todo , id }) {
   const [title, setTitle] = useState('');
     const [todoList, setTodoList] = useState();
    const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
   const createTodo = () => {
-    const todoRef = firebase.database().ref(`Todo`).child("de");
+    const todoRef = firebase.database().ref(`Todo`).child(id);
     var date = new Date();
     const todo = {
       title,

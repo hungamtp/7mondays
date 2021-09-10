@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import firebase from '../util/firebase';
 import "./task.css";
-import RemoveIcon from '@material-ui/icons/Remove';
 import DoneIcon from '@material-ui/icons/Done';
 import ReplayIcon from '@material-ui/icons/Replay';
 import { Paper } from '@material-ui/core';

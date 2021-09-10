@@ -20,7 +20,7 @@ export default function TodoList() {
   return (
     <Container maxWidth="lg">
       {todoList
-        ? todoList.map((todo, index) => <Todo todo={todo} key={index} />)
+        ? todoList.map((todo, index) => <Todo todo={todo} key={index} id={todo.id} />)
         : ''}
     </Container>
   );
