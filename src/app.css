@@ -4,6 +4,7 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    
 }
 
 input{
@@ -16,8 +17,22 @@ input:focus {
 }
 #back{
     position: fixed;
-    z-index:-1;
+   z-index:-1;
     font-size: 100px;
     left: 100px;
+    top: 100px;
+}
+.loginButton{
+    background-color: black;
+    color: white;
+    height: 30px;
+    margin-left: 10px;
+}
+.login-form{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 500px;
     top: 500px;
+
 }
